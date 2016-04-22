@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using UnityEngine;
 
-namespace TargetLocked.Weapons.GrenadeLaunchers
+namespace TargetLocked.Weapons.Eximg
 {
     public sealed class Zone : MonoBehaviour
     {
@@ -11,28 +11,28 @@ namespace TargetLocked.Weapons.GrenadeLaunchers
         private const string MAT_COLOR_PROP_NAME = "_TintColor";
         private const string ZONE_MAT_NAME = "Zone";
 
-        #endregion
+        #endregion Compile-time constants
 
         #region Runtime constants
 
         private static readonly Material ZONE_MATERIAL;
 
-        #endregion
+        #endregion Runtime constants
 
         #region Fields
 
         private float m_CreationTime;
 
-        #endregion
+        #endregion Fields
 
         #region Constructors
 
         static Zone()
         {
-            ZONE_MATERIAL = Resources.Load<Material>(GrenadeLauncher.ASSET_DIR + ZONE_MAT_NAME);
+            ZONE_MATERIAL = Resources.Load<Material>(EXIMG.ASSET_DIR + ZONE_MAT_NAME);
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Methods
 
@@ -69,6 +69,6 @@ namespace TargetLocked.Weapons.GrenadeLaunchers
             }
         }
 
-        #endregion
+        #endregion Methods
     }
 }

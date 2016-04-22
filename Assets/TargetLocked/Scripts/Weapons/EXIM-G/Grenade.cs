@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using UnityEngine;
 
-namespace TargetLocked.Weapons.GrenadeLaunchers
+namespace TargetLocked.Weapons.Eximg
 {
     public abstract class Grenade : MonoBehaviour
     {
@@ -33,7 +33,7 @@ namespace TargetLocked.Weapons.GrenadeLaunchers
 
         static Grenade()
         {
-            PREFAB = Resources.Load<GameObject>(GrenadeLauncher.ASSET_DIR + PREFAB_NAME);
+            PREFAB = Resources.Load<GameObject>(EXIMG.ASSET_DIR + PREFAB_NAME);
         }
 
         #endregion Constructors
