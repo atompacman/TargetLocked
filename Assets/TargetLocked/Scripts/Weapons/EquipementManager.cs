@@ -1,5 +1,4 @@
 ﻿using JetBrains.Annotations;
-using TargetLocked.Weapons.Eximg;
 using UnityEngine;
 
 namespace TargetLocked.Weapons
@@ -10,23 +9,23 @@ namespace TargetLocked.Weapons
 
         private Weapon m_MainWeapon;
 
-        #endregion Fields
+        #endregion
 
         #region Methods
 
         [UsedImplicitly]
         private void Start()
         {
-            m_MainWeapon = gameObject.AddComponent<EXIMG>();
+            m_MainWeapon = gameObject.AddComponent<EXIMG.EXIMG>();
             m_MainWeapon.transform.parent = transform;
         }
-        
+
         [UsedImplicitly]
         private void Update()
         {
             // TODO: switch weapon
         }
 
-        #endregion Methods
+        #endregion
     }
 }

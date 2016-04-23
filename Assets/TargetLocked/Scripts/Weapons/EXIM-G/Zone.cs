@@ -1,7 +1,7 @@
 ﻿using JetBrains.Annotations;
 using UnityEngine;
 
-namespace TargetLocked.Weapons.Eximg
+namespace TargetLocked.Weapons.EXIMG
 {
     public sealed class Zone : MonoBehaviour
     {

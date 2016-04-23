@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TargetLocked.Weapons.Eximg
+namespace TargetLocked.Weapons.EXIMG
 {
     // ReSharper disable once InconsistentNaming
     public sealed class EXIMG : Weapon
@@ -57,6 +57,7 @@ namespace TargetLocked.Weapons.Eximg
             var rb = grenade.GetComponent<Rigidbody>();
             var force = m_FireCharge * MAX_FORCE;
             rb.AddExplosionForce(force, transform.position, 1, 0, ForceMode.Force);
+            rb.AddForce(Common.PlayerObj.GetComponent<Rigidbody>().velocity);
 
             // Reset charge
             m_FireCharge = 0;

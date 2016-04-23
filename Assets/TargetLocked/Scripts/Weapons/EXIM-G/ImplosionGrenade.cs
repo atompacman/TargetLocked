@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TargetLocked.Weapons.Eximg
+namespace TargetLocked.Weapons.EXIMG
 {
     public sealed class ImplosionGrenade : Grenade
     {
