@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using UnityEngine;
 
 namespace TargetLocked.Weapons
@@ -13,30 +14,58 @@ namespace TargetLocked.Weapons
             ALTERNATIVE
         }
 
-        #endregion Nested types
+        #endregion
 
         #region Compile-time constants
 
         public const string ASSET_DIR = "Weapons/";
 
-        #endregion Compile-time constants
+        #endregion
 
         #region Fields
 
-        protected Mode GunMode;
         private bool m_IsHoldingTrigger;
 
-        #endregion Fields
+        #endregion
+
+        #region Properties
+
+        public Mode GunMode { get; private set; }
+        public WeaponInfoAttribute Info { get; private set; }
+
+        #endregion
 
         #region Abstract methods
 
-        protected abstract void OnTriggerPulled();
+        protected abstract void Init();
 
         protected abstract void OnTriggerHeld();
 
+        protected abstract void OnTriggerPulled();
+
         protected abstract void OnTriggerReleased();
 
-        #endregion Abstract methods
+        #endregion
+
+        #region Static methods
+
+        public static string GetAssetDir<T>()
+        {
+            return ASSET_DIR + GetWeaponInfo<T>().Name + "/";
+        }
+
+        public static WeaponInfoAttribute GetWeaponInfo<T>()
+        {
+            return GetWeaponInfo(typeof(T));
+        }
+
+        public static WeaponInfoAttribute GetWeaponInfo(Type i_WeaponType)
+        {
+            var attr = i_WeaponType.GetCustomAttributes(typeof(WeaponInfoAttribute), true);
+            return (WeaponInfoAttribute) attr[0];
+        }
+
+        #endregion
 
         #region Methods
 
@@ -45,6 +74,10 @@ namespace TargetLocked.Weapons
         {
             GunMode = Mode.MAIN;
             m_IsHoldingTrigger = false;
+            Info = GetWeaponInfo(GetType());
+            name = Info.Name;
+
+            Init();
         }
 
         [UsedImplicitly]
@@ -71,12 +104,12 @@ namespace TargetLocked.Weapons
             }
 
             // Check if weapon is switched
-            if (Input.GetMouseButtonUp(Common.MIDDLE_CLICK))
+            if (Input.GetMouseButtonDown(Common.MIDDLE_CLICK))
             {
                 GunMode = GunMode == Mode.MAIN ? Mode.ALTERNATIVE : Mode.MAIN;
             }
         }
 
-        #endregion Methods
+        #endregion
     }
 }

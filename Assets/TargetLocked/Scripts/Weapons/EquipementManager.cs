@@ -7,7 +7,7 @@ namespace TargetLocked.Weapons
     {
         #region Fields
 
-        private Weapon m_MainWeapon;
+        public Weapon MainWeapon { get; private set; }
 
         #endregion
 
@@ -16,8 +16,9 @@ namespace TargetLocked.Weapons
         [UsedImplicitly]
         private void Start()
         {
-            m_MainWeapon = gameObject.AddComponent<EXIMG.EXIMG>();
-            m_MainWeapon.transform.parent = transform;
+            var obj = new GameObject();
+            MainWeapon = obj.AddComponent<EXIMG.EXIMG>();
+            MainWeapon.transform.parent = transform;
         }
 
         [UsedImplicitly]

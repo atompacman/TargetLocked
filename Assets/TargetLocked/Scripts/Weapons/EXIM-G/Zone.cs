@@ -29,7 +29,7 @@ namespace TargetLocked.Weapons.EXIMG
 
         static Zone()
         {
-            ZONE_MATERIAL = Resources.Load<Material>(EXIMG.ASSET_DIR + ZONE_MAT_NAME);
+            ZONE_MATERIAL = Resources.Load<Material>(Weapon.GetAssetDir<EXIMG>() + ZONE_MAT_NAME);
         }
 
         #endregion Constructors

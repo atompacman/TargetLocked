@@ -33,7 +33,7 @@ namespace TargetLocked.Weapons.EXIMG
 
         static Grenade()
         {
-            PREFAB = Resources.Load<GameObject>(EXIMG.ASSET_DIR + PREFAB_NAME);
+            PREFAB = Resources.Load<GameObject>(Weapon.GetAssetDir<EXIMG>() + PREFAB_NAME);
         }
 
         #endregion Constructors
