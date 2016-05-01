@@ -7,16 +7,25 @@ namespace TargetLocked.Weapons.EXIMG
         #region Compile-time constants
 
         private const float FIRE_CHARGE_RATE = 1f;
+        private const float COOLDOWN_TIME = 0.2f;
 
         #endregion
 
         #region Fields
 
         public float FireCharge;
+        public float LastFireCharge;
 
         #endregion
 
         #region Methods
+
+        protected override void Start()
+        {
+            FireCharge = 0;
+            LastFireCharge = 0;
+            base.Start();
+        }
 
         protected override void OnTriggerHeld()
         {
@@ -32,15 +41,24 @@ namespace TargetLocked.Weapons.EXIMG
 
         protected override void OnTriggerPulled()
         {
-            FireCharge = 0;
         }
 
         protected abstract void Fire();
 
         protected override void OnTriggerReleased()
         {
-            // Fire gun
-            Fire();
+            // Don't fire during cooldown
+            IsFiring = Time.fixedTime - LastFireTime > COOLDOWN_TIME;
+            if (IsFiring)
+            {
+                // Update last fire time
+                LastFireTime = Time.fixedTime;
+
+                LastFireCharge = FireCharge;
+
+                // Fire gun
+                Fire();
+            }
 
             // Reset charge
             FireCharge = 0;

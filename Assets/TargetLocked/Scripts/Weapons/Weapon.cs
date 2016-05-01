@@ -30,6 +30,9 @@ namespace TargetLocked.Weapons
 
         #region Properties
 
+        public bool IsFiring { get; protected set; }
+        public float LastFireTime { get; protected set; }
+
         public Mode GunMode { get; private set; }
         public WeaponInfoAttribute Info { get; private set; }
 
@@ -67,24 +70,22 @@ namespace TargetLocked.Weapons
 
         #region Methods
 
-        protected virtual void Init()
-        {
-        }
-
         [UsedImplicitly]
-        private void Start()
+        protected virtual void Start()
         {
-            GunMode = Mode.MAIN;
             m_IsHoldingTrigger = false;
+            IsFiring = false;
+            GunMode = Mode.MAIN;
+            LastFireTime = float.NegativeInfinity;
             Info = GetWeaponInfo(GetType());
             name = Info.Name;
-
-            Init();
         }
 
         [UsedImplicitly]
         private void Update()
         {
+            IsFiring = false;
+
             // Check if trigger is pulled
             if (Input.GetMouseButtonDown(Common.LEFT_CLICK))
             {

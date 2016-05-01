@@ -3,7 +3,7 @@ using TargetLocked.Weapons;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TargetLocked.HUB
+namespace TargetLocked.HUD
 {
     public sealed class WeaponIndicator : MonoBehaviour
     {

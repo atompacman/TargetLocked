@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TargetLocked.HUB
+namespace TargetLocked.HUD
 {
     public abstract class SliderIndicator : MonoBehaviour
     {

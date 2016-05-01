@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace TargetLocked.HUB
+namespace TargetLocked.HUD
 {
     public sealed class VelocityMagnitudeSliderIndicator : SliderIndicator
     {
