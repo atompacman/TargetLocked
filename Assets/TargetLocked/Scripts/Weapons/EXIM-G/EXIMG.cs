@@ -4,11 +4,10 @@ namespace TargetLocked.Weapons.EXIMG
 {
     [WeaponInfo("EXIM-G", "Explosion", "Implosion")]
     // ReSharper disable once InconsistentNaming
-    public sealed class EXIMG : Weapon
+    public sealed class EXIMG : FireChargeWeapon
     {
         #region Compile-time constants
 
-        private const float FIRE_CHARGE_RATE = 1f;
         private const float MAX_FORCE = 4000;
         private const float MIN_FORCE = 150;
 
@@ -16,33 +15,11 @@ namespace TargetLocked.Weapons.EXIMG
 
         #region Fields
 
-        private float m_FireCharge;
-
         #endregion
 
         #region Methods
 
-        protected override void Init()
-        {}
-
-        protected override void OnTriggerHeld()
-        {
-            // Charge fire
-            m_FireCharge += Time.deltaTime * FIRE_CHARGE_RATE;
-
-            // If charge exceeds maximum, force shoot
-            if (m_FireCharge > 1)
-            {
-                OnTriggerReleased();
-            }
-        }
-
-        protected override void OnTriggerPulled()
-        {
-            m_FireCharge = 0;
-        }
-
-        protected override void OnTriggerReleased()
+        protected override void Fire()
         {
             // Create grenade
             var grenade = Instantiate(Grenade.PREFAB);
@@ -60,11 +37,8 @@ namespace TargetLocked.Weapons.EXIMG
             // Shoot grenade
             var rb = grenade.GetComponent<Rigidbody>();
             rb.velocity = Common.PlayerObj.GetComponent<Rigidbody>().velocity;
-            var force = MIN_FORCE + m_FireCharge * (MAX_FORCE - MIN_FORCE);
+            var force = MIN_FORCE + FireCharge * (MAX_FORCE - MIN_FORCE);
             rb.AddForce(cam.transform.forward * force, ForceMode.Force);
-
-            // Reset charge
-            m_FireCharge = 0;
         }
 
         #endregion

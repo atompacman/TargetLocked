@@ -9,7 +9,7 @@ namespace TargetLocked
         public const int LEFT_CLICK = 0;
         public const int MIDDLE_CLICK = 2;
         public const int RIGHT_CLICK = 1;
-        public const float EYES_HEIGHT = 0.5f;
+        public const float EYES_HEIGHT = 1.5f;
         private const string PLAYER_OBJ_NAME = "RigidBodyFPSController";
 
         #endregion Compile-time constants

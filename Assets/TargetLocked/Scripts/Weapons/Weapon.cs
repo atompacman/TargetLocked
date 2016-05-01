@@ -37,8 +37,6 @@ namespace TargetLocked.Weapons
 
         #region Abstract methods
 
-        protected abstract void Init();
-
         protected abstract void OnTriggerHeld();
 
         protected abstract void OnTriggerPulled();
@@ -68,6 +66,10 @@ namespace TargetLocked.Weapons
         #endregion
 
         #region Methods
+
+        protected virtual void Init()
+        {
+        }
 
         [UsedImplicitly]
         private void Start()
