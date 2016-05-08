@@ -5,6 +5,7 @@
         _Charge    ("Charge",    Range(0,1)) = 0.5
         _Radius    ("Radius",    Range(0,1)) = 0.5
         _Thickness ("Thickness", Range(0,1)) = 0.5
+        _Color     ("Color",     Color)      = (1,1,1,1)
     }
 
     SubShader
@@ -41,6 +42,7 @@
             float _Charge;
             float _Radius;
             float _Thickness;
+            float4 _Color;
 
             v2f vert(appdata v)
             {
@@ -78,7 +80,7 @@
                     alpha = 0;
                 }
 
-                return float4(1, 1, 1, alpha);
+                return float4(_Color.rgb, alpha);
             }
             ENDCG
         }

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace TargetLocked.Weapons.EXIMG
 {
-    public abstract class Grenade : MonoBehaviour
+    public abstract class AbstractGrenade : MonoBehaviour
     {
         #region Compile-time constants
 
@@ -31,7 +31,7 @@ namespace TargetLocked.Weapons.EXIMG
 
         #region Constructors
 
-        static Grenade()
+        static AbstractGrenade()
         {
             PREFAB = Resources.Load<GameObject>(Weapon.GetAssetDir<EXIMG>() + PREFAB_NAME);
         }

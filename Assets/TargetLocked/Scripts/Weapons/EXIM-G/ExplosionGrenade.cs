@@ -2,7 +2,7 @@
 
 namespace TargetLocked.Weapons.EXIMG
 {
-    public sealed class ExplosionGrenade : Grenade
+    public sealed class ExplosionGrenade : AbstractGrenade
     {
         #region Compile-time constants
 
@@ -12,7 +12,7 @@ namespace TargetLocked.Weapons.EXIMG
 
         #region Runtime constants
 
-        private static readonly Color COLOR = Color.red;
+        public static readonly Color COLOR = Color.red;
 
         #endregion Runtime constants
 

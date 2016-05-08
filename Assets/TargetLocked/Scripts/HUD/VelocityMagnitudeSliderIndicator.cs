@@ -6,7 +6,7 @@ namespace TargetLocked.HUD
     {
         #region Compile-time constants
 
-        private const float MAX_VALUE = 80f;
+        public const float MAX_VALUE = 80f;
 
         #endregion
 

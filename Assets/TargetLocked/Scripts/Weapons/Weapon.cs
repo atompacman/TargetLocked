@@ -87,7 +87,7 @@ namespace TargetLocked.Weapons
             IsFiring = false;
 
             // Check if trigger is pulled
-            if (Input.GetMouseButtonDown(Common.LEFT_CLICK))
+            if (Input.GetButtonDown(Common.FIRE_BUTTON))
             {
                 OnTriggerPulled();
                 m_IsHoldingTrigger = true;
@@ -100,14 +100,14 @@ namespace TargetLocked.Weapons
             }
 
             // Check is trigger is released
-            if (Input.GetMouseButtonUp(Common.LEFT_CLICK))
+            if (Input.GetButtonUp(Common.FIRE_BUTTON))
             {
                 OnTriggerReleased();
                 m_IsHoldingTrigger = false;
             }
 
             // Check if weapon is switched
-            if (Input.GetMouseButtonDown(Common.MIDDLE_CLICK))
+            if (Input.GetButtonDown(Common.SWITCH_WEAPON_MODE_BUTTON))
             {
                 GunMode = GunMode == Mode.MAIN ? Mode.ALTERNATIVE : Mode.MAIN;
             }

@@ -14,6 +14,7 @@ namespace TargetLocked.HUD
         private const string CHARGE_SHADER_PROP_NAME = "_Charge";
         private const string RADIUS_SHADER_PROP_NAME = "_Radius";
         private const string THICKNESS_SHADER_PROP_NAME = "_Thickness";
+        private const string COLOR_SHADER_PROP_NAME = "_Color";
 
         private const float RADIUS = 0.5f;
         private const float THICKNESS = 0.3f;
@@ -60,7 +61,8 @@ namespace TargetLocked.HUD
             // Decrease displayed charge after a shot is fired
             m_DisplayedCharge = fcw.IsFiring ? fcw.LastFireCharge : m_DisplayedCharge;
             m_DisplayedCharge = fcw.FireCharge < m_DisplayedCharge
-                ? Mathf.Clamp01(m_DisplayedCharge - fcw.LastFireCharge * UNCHARGE_RATE * Time.deltaTime)
+                ? Mathf.Clamp01(m_DisplayedCharge -
+                                fcw.LastFireCharge * UNCHARGE_RATE * Time.deltaTime)
                 : fcw.FireCharge;
 
             // Update displayed charge
@@ -78,6 +80,12 @@ namespace TargetLocked.HUD
             m_Material.SetFloat(THICKNESS_SHADER_PROP_NAME, THICKNESS +
                                                             FIRING_ANIM_THICNKESS_AMPLITUDE *
                                                             firingAnim - chargingAnim);
+
+            // Color matching weapon mode
+            if (fcw is EXIMG)
+            {
+                m_Material.SetColor(COLOR_SHADER_PROP_NAME, (fcw as EXIMG).GrenadeColor);
+            }
         }
 
         #endregion

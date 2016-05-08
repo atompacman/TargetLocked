@@ -40,7 +40,7 @@ namespace TargetLocked.Weapons.EXIMG
         {
             var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             go.transform.position = i_Pos;
-            go.transform.localScale = Vector3.one * Grenade.EXPLOSION_RADIUS * 2;
+            go.transform.localScale = Vector3.one * AbstractGrenade.EXPLOSION_RADIUS * 2;
             go.AddComponent<Zone>();
             go.GetComponent<SphereCollider>().enabled = false;
             go.GetComponent<MeshRenderer>().material = ZONE_MATERIAL;

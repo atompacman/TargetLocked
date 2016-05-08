@@ -6,9 +6,10 @@ namespace TargetLocked
     {
         #region Compile-time constants
 
-        public const int LEFT_CLICK = 0;
-        public const int MIDDLE_CLICK = 2;
-        public const int RIGHT_CLICK = 1;
+        public const string FIRE_BUTTON = "Fire";
+        public const string SWITCH_WEAPON_MODE_BUTTON = "Switch Weapon Mode";
+        public const string RUN_BUTTON = "Run";
+
         public const float EYES_HEIGHT = 1.5f;
         private const string PLAYER_OBJ_NAME = "RigidBodyFPSController";
 
